@@ -2,6 +2,6 @@
 # Usage: pip install -r requirements.txt
 
 Flask>=1.0.0
-request>=0
-google>=0
-newspaper3k>=0
+request
+google
+newspaper3k
