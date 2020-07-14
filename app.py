@@ -12,9 +12,9 @@ def home():
 def get_bot_response():
     userText = request.args.get('msg')
     msg = userText
-    rec = 'site:receita.economia.gov.br intext:' + msg
+    rec = 'site:receita.economia.gov.br intitle:' + msg
     listag = []
-    for urla in search(rec, tld='com.br', lang='pt-br', stop=3):
+    for urla in search(rec, tld='com.br', lang='pt-br', stop=3, pause=2):
         listag.append(urla)
     
     g = int(len(listag))
@@ -35,9 +35,9 @@ def get_bot_response():
         article.download()
         article.parse()
         article.text
-        reports2.append(str(article.text).replace('\n', ''))
+        reports2.append(str(article.text).replace('\n', ' '))
 
-    resposta_final = str(reports2).replace('\n', ' ')
+    resposta_final = str(reports2).replace('\n', ' ').replace('[', ' ').replace(']', ' ').replace(',', ' ').replace("'", '').replace('"', ' ')
        
     return str(resposta_final) 
   
